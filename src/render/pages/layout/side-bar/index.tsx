@@ -36,7 +36,7 @@ export const SideBar = (): JSX.Element => {
           </Text>
         </Box>
       </Box>
-      <Box h="calc(100vh - 190px)">
+      <Box>
         {/* <PerfectScrollbar
           ref={(ref) => {
             setScrollH(ref);

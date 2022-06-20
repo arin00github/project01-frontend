@@ -1,8 +1,16 @@
+//import axios, { AxiosResponse } from "axios";
+import React, { useEffect } from "react";
 import { Box } from "@chakra-ui/react";
-import React from "react";
 
 const DashobardIndex = (): JSX.Element => {
-  return <Box>DataTableIndex</Box>;
+  useEffect(() => {
+    console.log("useEffect dashboard");
+  }, []);
+  return (
+    <>
+      <Box></Box>
+    </>
+  );
 };
 
 export default DashobardIndex;

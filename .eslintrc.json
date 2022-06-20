@@ -22,12 +22,13 @@
   ],
   "rules": {
     "object-curly-spacing": ["error", "always"],
-    "no-console": "error",
+    "no-console": "off",
     "import/first": "off",
     "react/jsx-key": ["off", { "checkFragmentShorthand": true }],
     "react/prop-types": "off",
     "react/jsx-tag-spacing": ["error", { "beforeSelfClosing": "always" }],
-    "prettier/prettier": ["error", {"endOfLine": "auto"}]
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "@typescript-eslint/no-unused-vars": "off"
   },
   "settings": {
     "react": {
