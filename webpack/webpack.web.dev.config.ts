@@ -1,11 +1,12 @@
 /* eslint-disable no-use-before-define */
 import path from "path";
-import { Configuration, HotModuleReplacementPlugin } from "webpack";
+import { Configuration, DefinePlugin, HotModuleReplacementPlugin } from "webpack";
 import { BaseHrefWebpackPlugin } from "base-href-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
+import DotenvWebpack from "dotenv-webpack";
 // 이 내용이 없으면, devServer 이하 내용에 대하여 에러 발생함
 import "webpack-dev-server";
 
@@ -61,6 +62,10 @@ const config: Configuration = {
     }),
     new BaseHrefWebpackPlugin({ baseHref: "/monitoring/app/" }),
     new HotModuleReplacementPlugin(),
+    // new DefinePlugin({
+    //   "process.env": JSON.stringify(process.env),
+    // }),
+    new DotenvWebpack(),
     new ForkTsCheckerWebpackPlugin({
       async: false,
     }),

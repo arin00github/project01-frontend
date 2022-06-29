@@ -30,6 +30,7 @@ const GisEntry = ({ background }: { background?: string }): JSX.Element => {
     const baroTile = new TileMapBaro();
     setLayers([baroTile]);
     setState({ ...state, mapObject: myMap });
+    console.log("map", myMap);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

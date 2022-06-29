@@ -37,6 +37,16 @@ export const SideBar = (): JSX.Element => {
         </Box>
       </Box>
       <Box>
+        <Link to="/">
+          <Box w="100%" h="40px" lineHeight="40px" px="16px">
+            대시보드
+          </Box>
+        </Link>
+        <Link to="/gis-monitoring">
+          <Box w="100%" h="40px" lineHeight="40px" px="16px">
+            gis 모니터링
+          </Box>
+        </Link>
         {/* <PerfectScrollbar
           ref={(ref) => {
             setScrollH(ref);
