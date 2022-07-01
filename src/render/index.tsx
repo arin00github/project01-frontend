@@ -6,6 +6,8 @@ import App from "./App";
 import proj4 from "proj4";
 import { MapProjection } from "Component/gis/map-projection";
 import { register } from "ol/proj/proj4";
+import { Provider } from "react-redux";
+import store from "Store/index";
 
 proj4.defs("EPSG:5179", MapProjection.baroHdProj);
 proj4.defs("EPSG:5181", MapProjection.kakaoProj);
@@ -17,11 +19,13 @@ const fragment = new DocumentFragment();
 
 const root = ReactDOM.createRoot(rootElement || fragment);
 root.render(
-  <ChakraProvider theme={baseTheme}>
-    <DarkMode>
-      <App />
-    </DarkMode>
-  </ChakraProvider>
+  <Provider store={store}>
+    <ChakraProvider theme={baseTheme}>
+      <DarkMode>
+        <App />
+      </DarkMode>
+    </ChakraProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

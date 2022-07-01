@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 
 export interface IOneFilter {
-  alp: string;
-  value: string;
+  iso: string;
+  name: string;
 }
 
 export interface IOptions {

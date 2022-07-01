@@ -10,6 +10,7 @@ export const Layout = (): JSX.Element => {
         <Box
           w={{ base: "calc(100% - 240px)", "2xl": "calc(100% - 300px)" }}
           h="100vh"
+          pos="relative"
           // pos="fixed"
           //  top="0"
           //  left={{ base: "240px", "2xl": "300px" }}
