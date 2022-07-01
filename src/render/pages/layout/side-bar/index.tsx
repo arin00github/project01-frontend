@@ -7,7 +7,7 @@ export const SideBar = (): JSX.Element => {
     <Box h="100vh" w={{ base: "240px", "2xl": "300px" }} borderRight="1px solid" borderColor="gray.500">
       <Box h="70px" bg="linear-gradient(to left, #463ABB, #1B8EDB)">
         <Text textColor="white" padding="7%">
-          G I S - S E R V I C E
+          W O R L D - S E R V I C E
         </Text>
       </Box>
       <Flex flexDirection="column" margin={{ base: "10%", "2xl": "13%" }}>
@@ -42,14 +42,19 @@ export const SideBar = (): JSX.Element => {
             대시보드
           </Box>
         </Link>
-        <Link to="/gis-monitoring">
+        {/* <Link to="/gis-monitoring">
           <Box w="100%" h="40px" lineHeight="40px" px="16px">
             gis 모니터링
           </Box>
-        </Link>
+        </Link> */}
         <Link to="/data-list">
           <Box w="100%" h="40px" lineHeight="40px" px="16px">
             데이터 리스트
+          </Box>
+        </Link>
+        <Link to="/world-map">
+          <Box w="100%" h="40px" lineHeight="40px" px="16px">
+            세계지도
           </Box>
         </Link>
         {/* <PerfectScrollbar

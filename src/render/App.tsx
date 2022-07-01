@@ -5,6 +5,7 @@ import DataTableIndex from "./pages/data-table";
 import GisIndex from "./pages/gis";
 import NotFount from "./pages/not-fount";
 import { Layout } from "./pages/layout";
+import WorldMapIndex from "./pages/world";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/dashboard" element={<DashobardIndex />} />
             <Route path="/gis-monitoring" element={<GisIndex />} />
             <Route path="/data-list" element={<DataTableIndex />} />
+            <Route path="/world-map" element={<WorldMapIndex />} />
             <Route path="*" element={<NotFount />} />
           </Route>
         </Routes>
