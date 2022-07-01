@@ -5,12 +5,12 @@
     "paths": {
       "Component/*": ["src/render/component/*"],
       "Page/*": ["src/render/page/*"],
-     // "Assets/*": ["src/render/assets/*"],
+      // "Assets/*": ["src/render/assets/*"],
       "Store/*": ["src/render/store/*"],
       "Types/*": ["src/render/types/*"],
       "Layout/*": ["src/render/layout/*"],
       "Api/*": ["src/render/api/*"],
-      //"Service/*": ["src/service/*"]
+      "Utils/*": ["src/render/utils/*"]
     },
     "allowJs": true,
     "allowSyntheticDefaultImports": true,

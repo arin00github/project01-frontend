@@ -1,6 +1,6 @@
 export interface IDeplomacyList {
   country_eng_nm: string;
-  country_iso_apl2: string;
+  country_iso_alp2: string;
   country_nm: string;
   diplomatic_relations: string;
   import_amount: string;

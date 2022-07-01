@@ -52,7 +52,7 @@ const config: Configuration = {
       Types: path.resolve(__dirname, "../src/render/types/"),
       Layout: path.resolve(__dirname, "../src/render/layout/"),
       Api: path.resolve(__dirname, "../src/render/api/"),
-      //Service: path.resolve(__dirname, "../src/render/service/"),
+      Utils: path.resolve(__dirname, "../src/render/utils/"),
     },
     extensions: [".tsx", ".ts", ".js"],
   },

@@ -12,9 +12,10 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<DashobardIndex />} />
+            <Route path="/" element={<DataTableIndex />} />
+            <Route path="/dashboard" element={<DashobardIndex />} />
             <Route path="/gis-monitoring" element={<GisIndex />} />
-            <Route path="/data-monitoring" element={<DataTableIndex />} />
+            <Route path="/data-list" element={<DataTableIndex />} />
             <Route path="*" element={<NotFount />} />
           </Route>
         </Routes>
