@@ -1,12 +1,16 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { IResultCode, IDeplomacyList, ICountryEconomy, ICountryFlag } from "Types/deplomacy-interface";
+import { IResultCode, IDeplomacyList, ICountryEconomy, ICountryMap, ICountryEnv } from "Types/deplomacy-interface";
 import { IOneFilter, IOptions } from "Types/table-inteface";
 import { IApiCollection } from "./api-interface";
 
 export class ApiCollection implements IApiCollection {
   static readonly baseUrl = "http://apis.data.go.kr/1262000/OverviewKorRelationService/getOverviewKorRelationList";
   static readonly economyUrl = "https://apis.data.go.kr/1262000/CountryEconomyService2/getCountryEconomyList2";
-  static readonly flagUrl = "http://apis.data.go.kr/1262000/CountryMapService2/getCountryMapList2";
+  static readonly mapUrl = "http://apis.data.go.kr/1262000/CountryMapService2/getCountryMapList2";
+  static readonly environmentUrl =
+    "http://apis.data.go.kr/1262000/EnvironmentalInformationService/getEnvironmentalInformationList";
+
+  static readonly flagUrl = "http://apis.data.go.kr/1262000/CountryFlagService2/getCountryFlagList2";
   static readonly API_KEY = process.env.REACT_APP_DEPLO_API_KEY;
 
   //constructor(private bearerToken: string) {}
@@ -72,7 +76,39 @@ export class ApiCollection implements IApiCollection {
     return undefined;
   }
 
-  async GetCountryFlag(country: { iso: string; name: string }): Promise<IResultCode<ICountryFlag> | undefined> {
+  async GetCountryMap(country: { iso: string; name: string }): Promise<IResultCode<ICountryMap> | undefined> {
+    const detailStrig = `cond[country_nm::EQ]=${country.name} &cond[country_iso_alp2::EQ]=${country.iso}`;
+
+    const URL = `${ApiCollection.mapUrl}?serviceKey=${ApiCollection.API_KEY}&pageNo=1&numOfRows=10 ${detailStrig}`;
+
+    const response = await ApiCollection.executeRequest(URL, {
+      method: "GET",
+    });
+
+    if (response && response.data) {
+      return response.data as IResultCode<ICountryMap>;
+    }
+
+    return undefined;
+  }
+
+  async GetCountryEnv(country: { iso: string; name: string }): Promise<IResultCode<ICountryEnv> | undefined> {
+    const detailStrig = `cond[country_nm::EQ]=${country.name} &cond[country_iso_alp2::EQ]=${country.iso}`;
+
+    const URL = `${ApiCollection.environmentUrl}?serviceKey=${ApiCollection.API_KEY}&pageNo=1&numOfRows=10 ${detailStrig}`;
+
+    const response = await ApiCollection.executeRequest(URL, {
+      method: "GET",
+    });
+
+    if (response && response.data) {
+      return response.data as IResultCode<ICountryEnv>;
+    }
+
+    return undefined;
+  }
+
+  async GetCountryFlag(country: { iso: string; name: string }): Promise<IResultCode<ICountryMap> | undefined> {
     const detailStrig = `cond[country_nm::EQ]=${country.name} &cond[country_iso_alp2::EQ]=${country.iso}`;
 
     const URL = `${ApiCollection.flagUrl}?serviceKey=${ApiCollection.API_KEY}&pageNo=1&numOfRows=10 ${detailStrig}`;
@@ -82,9 +118,8 @@ export class ApiCollection implements IApiCollection {
     });
 
     if (response && response.data) {
-      return response.data as IResultCode<ICountryFlag>;
+      return response.data as IResultCode<ICountryMap>;
     }
-
     return undefined;
   }
 }

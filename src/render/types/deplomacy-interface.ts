@@ -41,13 +41,25 @@ export interface ICountryEconomy {
   written_year: number;
 }
 
-export interface ICountryFlag {
+export interface ICountryMap {
   content_ty: string;
   country_eng_nm: string;
   country_iso_alp2: string;
   country_nm: string;
   download_url: string;
   origin_file_nm: string;
+}
+
+export interface ICountryEnv {
+  country_eng_nm: string;
+  country_iso_alp2: string;
+  country_nm: string;
+  year: number;
+  employment_rate: string;
+  clean_water_use_rate: number;
+  consumer_price_idx: number;
+  tuber_pr_hndrd_thsnd_ppl_outbreak_rate: number;
+  unemployment_rate: number;
 }
 
 export interface IResultCode<T> {

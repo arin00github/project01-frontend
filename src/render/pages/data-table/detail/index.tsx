@@ -23,16 +23,14 @@ const DetailIndex = ({ onClose }: IThisPage): JSX.Element => {
     if (country && country.selCountry) {
       const service = NewAPICall();
       service.GetDetailEconomy(country.selCountry).then((res) => {
-        console.log(res?.data);
         if (res && res.data) {
           const result = res.data[0];
           setDataInfo({ ...result });
         }
       });
       service
-        .GetCountryFlag(country.selCountry)
+        .GetCountryMap(country.selCountry)
         .then((res) => {
-          console.log("flag", res);
           if (res && res.data) {
             const result = res.data[0];
             setFlagUrl(result.download_url);
