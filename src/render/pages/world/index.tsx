@@ -6,24 +6,14 @@ import { OSM } from "ol/source";
 import React from "react";
 import { useEffect } from "react";
 import * as OlControl from "ol/control";
+import VectorLayer from "ol/layer/Vector";
+import VectorSource from "ol/source/Vector";
+import { GeoJSON, MVT } from "ol/format";
+import { Fill, Stroke, Style } from "ol/style";
+import { WorldMapEntry } from "Component/world";
 
 const WorldMapIndex = (): JSX.Element => {
-  useEffect(() => {
-    const bgLayer = new TileLayer({ source: new OSM() });
-    const map = new Map({
-      target: "world-map",
-      layers: [bgLayer],
-      view: new View({
-        projection: "EPSG:4326",
-        center: [0, 0],
-        zoom: 3,
-      }),
-
-      controls: OlControl.defaults({ zoom: false }),
-    });
-  }, []);
-
-  return <Box w="100%" h="100vh" id="world-map"></Box>;
+  return <WorldMapEntry />;
 };
 
 export default WorldMapIndex;

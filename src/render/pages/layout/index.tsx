@@ -8,7 +8,7 @@ export const Layout = (): JSX.Element => {
       <Box w="100%" display="flex">
         <SideBar />
         <Box
-          w={{ base: "calc(100% - 240px)", "2xl": "calc(100% - 300px)" }}
+          w="calc(100% - 240px)"
           h="100vh"
           pos="relative"
           // pos="fixed"

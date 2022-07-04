@@ -21,9 +21,7 @@ const root = ReactDOM.createRoot(rootElement || fragment);
 root.render(
   <Provider store={store}>
     <ChakraProvider theme={baseTheme}>
-      <DarkMode>
-        <App />
-      </DarkMode>
+      <App />
     </ChakraProvider>
   </Provider>
 );

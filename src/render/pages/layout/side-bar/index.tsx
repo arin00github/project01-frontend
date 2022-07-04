@@ -4,22 +4,13 @@ import { Link } from "react-router-dom";
 
 export const SideBar = (): JSX.Element => {
   return (
-    <Box h="100vh" w={{ base: "240px", "2xl": "300px" }} borderRight="1px solid" borderColor="gray.500">
+    <Box h="100vh" w="240px" borderRight="1px solid" borderColor="gray.500">
       <Box h="70px" bg="linear-gradient(to left, #463ABB, #1B8EDB)">
         <Text textColor="white" padding="7%">
           W O R L D - S E R V I C E
         </Text>
       </Box>
-      <Flex flexDirection="column" margin={{ base: "10%", "2xl": "13%" }}>
-        <Flex>
-          <Box>
-            <Avatar size="xl" bg="#1B8EDB" flexWrap="nowrap" />
-          </Box>
-          <Box ml="5%" mt="7%">
-            <Text textColor="#AFDAF6">이노뎁</Text>
-          </Box>
-        </Flex>
-      </Flex>
+      <Flex flexDirection="column" margin={{ base: "10%", "2xl": "13%" }}></Flex>
       <Box mb={4}>
         <Box w="70%" m="0 auto" display="flex" color="white" fontSize="15px" textAlign="center">
           <Text borderRight="1px solid white" w="100%" cursor="pointer">
