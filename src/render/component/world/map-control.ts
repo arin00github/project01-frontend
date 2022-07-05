@@ -1,18 +1,20 @@
-import { Map } from "ol";
+import { Map, Overlay } from "ol";
 import BaseLayer from "ol/layer/Base";
 import { NewWorldMap } from "./gis-common";
 import { LayerVectorLabel } from "./layer-vector-label";
 
 export class MapCollection {
   private readonly map: Map;
+  private readonly overlay: Overlay;
   private readonly vectorLayer: LayerVectorLabel;
   private readonly projection: string;
 
-  public onClick?: (src: Map, coord?: number[], pnt?: number[]) => void;
+  public onClick?: (src: Map, coord: number[], pnt: number[]) => void;
   public onMoveEnd?: (src: Map) => void;
 
   constructor(targetName: string, projection?: string, center?: number[], zoom?: number) {
     this.map = NewWorldMap(targetName, projection, center, zoom);
+    this.overlay = new Overlay({ element: undefined, positioning: "center-center" });
     this.vectorLayer = new LayerVectorLabel();
     this.projection = this.map.getView().getProjection().getCode();
 
@@ -31,6 +33,10 @@ export class MapCollection {
         this.onMoveEnd(e.map);
       }
     });
+  }
+
+  set addOverlay(overlay: Overlay) {
+    this.map.addOverlay(overlay);
   }
 
   set addLayers(layers: BaseLayer[]) {
