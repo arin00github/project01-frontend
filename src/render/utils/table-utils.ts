@@ -12,12 +12,16 @@ export default class TableUtils {
   //   return resultOption;
   // };
 
+  static testFunction() {
+    return "jest-test";
+  }
+
   /**
    * Pagination 생성
    * @param totalData 데이터 전체 수
    * @returns pagination 배열
    */
-  static createPagination = (totalData: number, perPageCount?: number) => {
+  static createPagination(totalData: number, perPageCount?: number) {
     const count = perPageCount || 10;
     const arrayLength = Math.ceil(totalData / count);
     const newIndexBox: number[] = [];
@@ -25,9 +29,9 @@ export default class TableUtils {
       newIndexBox.push(i);
     }
     return newIndexBox;
-  };
+  }
 
-  static displayPagination = (totalPagesLength: number[], pageIndex: number) => {
+  static displayPagination(totalPagesLength: number[], pageIndex: number) {
     const lastNumber = totalPagesLength.length;
     let newArray;
 
@@ -44,5 +48,5 @@ export default class TableUtils {
     }
 
     return newArray;
-  };
+  }
 }

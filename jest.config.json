@@ -1,5 +1,7 @@
 {
   "preset": "ts-jest",
-  "testEnvironment": "node",
-  "collectCoverageFrom": ["!**/node_modules/**"]
+  "collectCoverage": true,
+  "verbose": true,
+  "transform": {},
+  "extensionsToTreatAsEsm": [".ts"]
 }
