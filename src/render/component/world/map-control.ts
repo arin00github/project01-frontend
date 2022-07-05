@@ -24,6 +24,7 @@ export class MapCollection {
   private bindEvent() {
     this.map.on("click", (e) => {
       if (this.onClick && e && e.map) {
+        //바깥에서 onClick에 대한 구체적인 함수 이벤트를 정의한다
         this.onClick(this.map, e.map.getEventCoordinate(e.originalEvent), e.map.getEventPixel(e.originalEvent));
       }
     });

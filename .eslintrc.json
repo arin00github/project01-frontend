@@ -2,7 +2,8 @@
   "env": {
     "browser": true,
     "es6": true,
-    "jest": true
+    "jest": true,
+    "node": true
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -13,7 +14,7 @@
     "project": "./tsconfig.json"
   },
   "root": true,
-  "plugins": ["@typescript-eslint", "react-hooks", "prettier"],
+  "plugins": ["@typescript-eslint", "react-hooks", "prettier", "jest"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -35,5 +36,12 @@
       "pragma": "React",
       "version": "detect"
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["__test__/*.ts"],
+      "env": { "jest": true, "node": true },
+      "plugins": ["jest"]
+    }
+  ]
 }
