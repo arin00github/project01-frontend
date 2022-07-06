@@ -1,10 +1,14 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { Map, View, Feature, Overlay } from "ol";
 import React, { useCallback, useState } from "react";
 import { useEffect } from "react";
 import { MapCollection } from "./map-control";
 import { LayerVectorLabel } from "./layer-vector-label";
 import BaseLayer from "ol/layer/Base";
+import Select from "ol/interaction/Select";
+import { Fill, Stroke, Style } from "ol/style";
+import { altKeyOnly, click, pointerMove } from "ol/events/condition";
+import { Geometry } from "ol/geom";
 
 export const WorldMapEntry = (): JSX.Element => {
   const [mapObject, setMapObject] = useState<MapCollection | undefined>(undefined);
@@ -49,7 +53,7 @@ export const WorldMapEntry = (): JSX.Element => {
             const readOverlay = src.getOverlayById("select-popup");
             readOverlay.setPosition(coord);
             changePositioning(readOverlay, pnt);
-            setSelItem({ ...content });
+            setSelItem({ ...content, coord: coord });
           } else {
             const readOverlay = src.getOverlayById("select-popup");
             readOverlay.setPosition(undefined);
@@ -60,6 +64,7 @@ export const WorldMapEntry = (): JSX.Element => {
     },
     [state, changePositioning]
   );
+  console.log("mapObject", mapObject);
 
   useEffect(() => {
     const map = new MapCollection("world-map");
@@ -91,7 +96,12 @@ export const WorldMapEntry = (): JSX.Element => {
       <Box id="popup" p={8} bg="white" w="280px" boxShadow="0 0 18px rgba(0,0,0,0.08)" color="gray.800">
         {selItem && (
           <Box>
-            {selItem.name} / {selItem.iso_a2}
+            <Box>
+              {selItem.name} / {selItem.iso_a2}
+            </Box>
+            <Text>
+              위도: {selItem.coord[0]}/ 경도: {selItem.coord[1]}
+            </Text>
           </Box>
         )}
       </Box>

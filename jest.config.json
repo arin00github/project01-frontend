@@ -1,7 +1,0 @@
-{
-  "preset": "ts-jest",
-  "collectCoverage": true,
-  "verbose": true,
-  "transform": {},
-  "extensionsToTreatAsEsm": [".ts"]
-}

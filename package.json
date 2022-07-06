@@ -30,8 +30,7 @@
   "scripts": {
     "start": "webpack serve --config webpack/webpack.web.dev.config.ts",
     "build": "react-scripts build",
-    "test-common": "jest",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
