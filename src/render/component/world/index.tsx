@@ -9,10 +9,13 @@ import Select from "ol/interaction/Select";
 import { Fill, Stroke, Style } from "ol/style";
 import { altKeyOnly, click, pointerMove } from "ol/events/condition";
 import { Geometry } from "ol/geom";
+import { LayerSeleted } from "./layer-select";
 
 export const WorldMapEntry = (): JSX.Element => {
   const [mapObject, setMapObject] = useState<MapCollection | undefined>(undefined);
-  const [state, setState] = useState<{ layers: BaseLayer[]; vectorLayer: LayerVectorLabel } | undefined>(undefined);
+  const [state, setState] = useState<
+    { layers: BaseLayer[]; vectorLayer: LayerVectorLabel; selectLayer: LayerSeleted } | undefined
+  >(undefined);
 
   const [popup, setPopup] = useState<Overlay | undefined>(undefined);
 
@@ -54,6 +57,7 @@ export const WorldMapEntry = (): JSX.Element => {
             readOverlay.setPosition(coord);
             changePositioning(readOverlay, pnt);
             setSelItem({ ...content, coord: coord });
+            state.selectLayer.redraw(feature[0], content.name);
           } else {
             const readOverlay = src.getOverlayById("select-popup");
             readOverlay.setPosition(undefined);
@@ -77,8 +81,9 @@ export const WorldMapEntry = (): JSX.Element => {
   useEffect(() => {
     if (mapObject) {
       const bgLayer = new LayerVectorLabel();
-      mapObject.addLayers = [bgLayer];
-      setState({ ...state, layers: [bgLayer], vectorLayer: bgLayer });
+      const newLayer = new LayerSeleted();
+      mapObject.addLayers = [bgLayer, newLayer];
+      setState({ ...state, layers: [bgLayer], vectorLayer: bgLayer, selectLayer: newLayer });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapObject]);

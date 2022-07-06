@@ -25,6 +25,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
-  "exclude": ["__test__", "jest.config.js"]
+  "include": ["src"]
 }

@@ -14,7 +14,7 @@
     "project": "./tsconfig.json"
   },
   "root": true,
-  "plugins": ["@typescript-eslint", "react-hooks", "prettier", "jest"],
+  "plugins": ["@typescript-eslint", "react-hooks", "prettier"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -36,12 +36,5 @@
       "pragma": "React",
       "version": "detect"
     }
-  },
-  "overrides": [
-    {
-      "files": ["__test__/*.ts"],
-      "env": { "jest": true, "node": true },
-      "plugins": ["jest"]
-    }
-  ]
+  }
 }
