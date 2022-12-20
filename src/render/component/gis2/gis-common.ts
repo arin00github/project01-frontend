@@ -3,6 +3,7 @@ import * as OlControl from "ol/control";
 import * as proj from "ol/proj";
 import { GeoJSON } from "ol/format";
 import { Map, View } from "ol";
+import { MapProjection } from "./map-projection";
 
 export type BackgroundMapType = "none" | "baro" | "kakao" | "skyview" | "hybrid";
 export const DefaultLocation = [127.606847, 35.730482]; // [126.8915302, 37.4858711];
@@ -59,7 +60,10 @@ export const NewGisMap = (targetName: string, projection?: string, center?: numb
     view: new View({
       projection: projection || DefaultProjection,
       center: proj.fromLonLat(center || DefaultLocation, projection),
-      zoom: zoom || 8,
+      zoom: zoom || 2,
+      resolutions: MapProjection.baroHdResolution,
+      minZoom: 2,
+      maxZoom: 18,
     }),
     controls: OlControl.defaults({
       zoom: false,

@@ -13,12 +13,13 @@ export const FormatString = (str: string, ...val: string[]): string => {
   return str;
 };
 
+const projection = new proj.Projection({ code: "EPSG:5179" });
+console.log("projection", projection);
+
 export class BaroTileSource extends WMTS {
   constructor(private readonly sourcePath?: string) {
     super({
-      projection: new proj.Projection({
-        code: "EPSG:5179",
-      }),
+      projection: projection,
       tileGrid: new WmtsTileGrid({
         extent: MapProjection.baroHdExtent,
         origin: [-200000.0, 4000000.0],

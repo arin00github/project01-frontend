@@ -23,7 +23,7 @@ const GisIndex = (): JSX.Element => {
   return (
     <>
       <Box w="100%" h="100vh" id="map22" display="none"></Box>
-      <GisEntry2 />;
+      <GisEntry2 />
     </>
   );
 };

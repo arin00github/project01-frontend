@@ -86,7 +86,7 @@ const config: Configuration = {
     historyApiFallback: {
       index: "/monitoring/app/",
     },
-    port: 4500,
+    port: 4700,
     open: true,
     hot: true,
     proxy: {
