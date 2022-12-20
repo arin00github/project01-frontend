@@ -13,6 +13,7 @@ import { Fill, Stroke, Style } from "ol/style";
 import { WorldMapEntry } from "Component/world";
 
 const WorldMapIndex = (): JSX.Element => {
+  console.log("worldmap index");
   return <WorldMapEntry />;
 };
 

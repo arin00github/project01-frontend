@@ -13,17 +13,6 @@ export class LayerVectorLabel extends VectorLayer<VectorSource> {
       color: "#dbdbdb",
     }),
   });
-  private selectStyle = new Style({
-    stroke: new Stroke({
-      width: 1,
-      color: "red",
-    }),
-    fill: new Fill({
-      color: "#dbdbdb",
-    }),
-  });
-
-  public selectedFeatureId: string | undefined = undefined;
 
   constructor() {
     //Options<VectorSource<Geometry>>
@@ -36,35 +25,9 @@ export class LayerVectorLabel extends VectorLayer<VectorSource> {
       background: "white",
       style: (feature) => {
         if (feature) {
-          if (feature.getProperties().name === this.selectedFeatureId) {
-            console.log("change style");
-            return this.selectStyle;
-          } else {
-            return this.baseStyle;
-          }
+          return this.baseStyle;
         }
       },
     });
-    this.bindEvent();
-  }
-
-  private bindEvent() {
-    this.addEventListener("change", (e) => {
-      if (this.selectedFeatureId) {
-        console.log("change");
-      }
-    });
-  }
-  public redraw(valueId: string | undefined) {
-    this.getSelectFeature(valueId);
-    this.getSource()?.refresh();
-  }
-
-  public getSelectFeature(valueId: string | undefined) {
-    if (this.selectedFeatureId !== valueId) {
-      this.selectedFeatureId = valueId;
-    } else {
-      this.selectedFeatureId = undefined;
-    }
   }
 }

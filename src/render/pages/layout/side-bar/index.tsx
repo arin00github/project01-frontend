@@ -33,11 +33,16 @@ export const SideBar = (): JSX.Element => {
             대시보드
           </Box>
         </Link>
-        {/* <Link to="/gis-monitoring">
+        <Link to="/gis-monitoring">
           <Box w="100%" h="40px" lineHeight="40px" px="16px">
             gis 모니터링
           </Box>
-        </Link> */}
+        </Link>
+        <Link to="/gis-monitoring2">
+          <Box w="100%" h="40px" lineHeight="40px" px="16px">
+            gis 모니터링2
+          </Box>
+        </Link>
         <Link to="/data-list">
           <Box w="100%" h="40px" lineHeight="40px" px="16px">
             데이터 리스트

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { register } from "ol/proj/proj4";
-import GisEntry from "Component/gis";
+import GisEntry2 from "Component/gis2";
 import axios from "axios";
 import { Box } from "@chakra-ui/react";
 
@@ -22,8 +22,8 @@ const GisIndex = (): JSX.Element => {
   }, []);
   return (
     <>
-      <Box w="100%" h="100vh" id="map2" display="none"></Box>
-      <GisEntry />
+      <Box w="100%" h="100vh" id="map22" display="none"></Box>
+      <GisEntry2 />;
     </>
   );
 };

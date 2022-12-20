@@ -5,10 +5,6 @@ import { useEffect } from "react";
 import { MapCollection } from "./map-control";
 import { LayerVectorLabel } from "./layer-vector-label";
 import BaseLayer from "ol/layer/Base";
-import Select from "ol/interaction/Select";
-import { Fill, Stroke, Style } from "ol/style";
-import { altKeyOnly, click, pointerMove } from "ol/events/condition";
-import { Geometry } from "ol/geom";
 import { LayerSeleted } from "./layer-select";
 
 export const WorldMapEntry = (): JSX.Element => {
@@ -98,7 +94,7 @@ export const WorldMapEntry = (): JSX.Element => {
   return (
     <>
       <Box id="world-map" w="100%" h="100vh"></Box>
-      <Box id="popup" p={8} bg="white" w="280px" boxShadow="0 0 18px rgba(0,0,0,0.08)" color="gray.800">
+      {/* <Box id="popup" p={8} bg="white" w="280px" boxShadow="0 0 18px rgba(0,0,0,0.08)" color="gray.800">
         {selItem && (
           <Box>
             <Box>
@@ -109,7 +105,7 @@ export const WorldMapEntry = (): JSX.Element => {
             </Text>
           </Box>
         )}
-      </Box>
+      </Box> */}
     </>
   );
 };
