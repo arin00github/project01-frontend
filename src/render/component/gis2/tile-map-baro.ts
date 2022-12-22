@@ -3,7 +3,6 @@ import * as proj from "ol/proj";
 import WmtsTileGrid from "ol/tilegrid/WMTS";
 import { MapProjection } from "./map-projection";
 import { ImageTile, Tile } from "ol";
-import { get as getProjection } from "ol/proj";
 import { getTopLeft, getWidth } from "ol/extent";
 import TileLayer from "ol/layer/Tile";
 
@@ -15,17 +14,17 @@ export const FormatString = (str: string, ...val: string[]): string => {
 };
 
 const projection = new proj.Projection({ code: "EPSG:5179" });
-const projectionExt = projection?.getExtent();
+projection?.setExtent([-200000.0, -28024123.62, 31824123.62, 4000000.0]);
 
-const size = projectionExt ? getWidth(projectionExt) / 256 : 0;
-console.log(projectionExt, size, projection);
+// const size = projectionExt ? getWidth(projectionExt) / 256 : 0;
+// console.log(projectionExt, size, projection);
 export class BaroTileSource2 extends WMTS {
   constructor(private readonly sourcePath?: string) {
     super({
       projection: new proj.Projection({ code: "EPSG:5179" }),
       tileGrid: new WmtsTileGrid({
         extent: MapProjection.baroHdExtent,
-        origin: [-200000.0, 400000.0],
+        origin: getTopLeft(projection.getExtent()),
         tileSize: 256,
         matrixIds: MapProjection.matrixIds,
         resolutions: MapProjection.baroHdResolution,
@@ -40,20 +39,10 @@ export class BaroTileSource2 extends WMTS {
         '<img style="width:96px; height:16px;"src="http://map.ngii.go.kr/img/process/ms/map/common/img_btoLogo3.png">',
       ],
       tileLoadFunction: (tile: Tile, src: string) => {
-        const projectionExt = projection?.getExtent();
-        const size = projectionExt ? getWidth(projectionExt) / 256 : 0;
-
         const imageTile = tile as ImageTile;
 
-        const zValue = imageTile["tileCoord"][0] + 1;
-        const minorsub = imageTile["tileCoord"][0] > 2 ? imageTile["tileCoord"][0] * 10 : 0;
-        const subValue = zValue > 1 ? zValue * 10 : 5;
-
-        const tileRowNumber = Number(src.split("TileRow=")[1]) + subValue;
-
-        const newsrc = src.split("TileRow=")[0] + "TileRow=" + tileRowNumber;
         const ImageGet = imageTile.getImage() as HTMLImageElement;
-        ImageGet.src = newsrc;
+        ImageGet.src = src;
       },
       crossOrigin: "anonymous",
       wrapX: true,

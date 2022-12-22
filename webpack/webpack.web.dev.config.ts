@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import path from "path";
 import { Configuration, DefinePlugin, HotModuleReplacementPlugin } from "webpack";
-import { BaseHrefWebpackPlugin } from "base-href-webpack-plugin";
+
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
@@ -60,7 +60,6 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
-    new BaseHrefWebpackPlugin({ baseHref: "/monitoring/app/" }),
     new HotModuleReplacementPlugin(),
     // new DefinePlugin({
     //   "process.env": JSON.stringify(process.env),

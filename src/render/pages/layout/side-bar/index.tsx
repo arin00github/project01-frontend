@@ -43,6 +43,11 @@ export const SideBar = (): JSX.Element => {
             gis 모니터링2
           </Box>
         </Link>
+        <Link to="/naver-map">
+          <Box w="100%" h="40px" lineHeight="40px" px="16px">
+            네이버 지도
+          </Box>
+        </Link>
         <Link to="/data-list">
           <Box w="100%" h="40px" lineHeight="40px" px="16px">
             데이터 리스트
